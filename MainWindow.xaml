@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="800" Background="DarkGreen">
+        Title="MainWindow" Height="900" Width="1000" Background="DarkGreen">
 
     <!--Implement global settings for AppBar buttons-->
     <Window.Resources>
@@ -69,7 +69,7 @@
         <!--Create ScrollViewer and his components-->
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
 
-            <Grid x:Name="gridMainScrollViewer">
+            <Grid x:Name="gridMainScrollViewer" Background="DarkSlateGray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="7*"/>
                     <ColumnDefinition Width="3*"/>
@@ -108,13 +108,28 @@
                         <!--gridTop implemetation-->
                         <Grid x:Name="gridTop" Background="DarkSlateGray">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="5*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2.3*"/>
                                 <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="2.3*"/>
+                                <ColumnDefinition Width="2.4*"/>
                             </Grid.ColumnDefinitions>
+
+                            <Viewbox Grid.Column="0" Stretch="Fill">
+                                <Button x:Name="buttonGPU" Content="CPU" BorderBrush="Silver" BorderThickness="0" Background="White" Foreground="Black" 
+                                        Padding="10, 40, 10, 0" Margin="20, 0, 20, 0" FontSize="10"/>
+                            </Viewbox>
+
+                            <Viewbox Grid.Column="1" Stretch="Fill">
+                                <Button Content="CPU" BorderThickness="0"/>
+                            </Viewbox>
+
+                            <Viewbox Grid.Column="2" Stretch="Fill">
+                                <Button x:Name="buttonVRAM" Content="VRAM" BorderBrush="Silver" BorderThickness="0" Background="White" Foreground="Black" 
+                                        Padding="10, 40, 10, 0 " Margin="20, 0, 20, 0" FontSize="10"/>
+                            </Viewbox>
                         </Grid>
                     </Border>
+
                 </Grid>
                 
                 <Grid x:Name="gridRightScrollViewer" Grid.Column="1" Grid.Row="1" Background="Blue" />
