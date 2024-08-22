@@ -5,22 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1000" Background="DarkGreen">
+        Title="MainWindow" Height="900" Width="1100" Background="CadetBlue">
 
     <!--Implement global settings for AppBar buttons-->
     <Window.Resources>
         <Style x:Key="buttonsStyleAppBar" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="12"/>
             <Setter Property="BorderBrush" Value="Silver"/>
             <Setter Property="BorderThickness" Value="0.3"/>
-            <Setter Property="Padding" Value="3"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+
+        <Style x:Key="buttonsStyleGridMiddleScrollViewer" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="Silver"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="0"/>
         </Style>
     </Window.Resources>
 
     <!--Set gridMain margin-->
-    <Grid Margin="15">
+    <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="9*" />
@@ -39,101 +48,117 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!--Create ViewBoxex(with Buttons) for App Bar-->
-                <Viewbox Grid.Column="0" Stretch="Fill">
-                    <Button x:Name="buttonL"  Content="L" Style="{StaticResource buttonsStyleAppBar}"/>
-                </Viewbox>
-
-                <Viewbox Grid.Column="1">
-                    <TextBlock x:Name="textBlockLegionSlim"  Text="Legion Slim 5 16APH8" Foreground="White" Padding="5, 5, 5, 0"/>
-                </Viewbox>
-
-                <Viewbox Grid.Column="2" Stretch="Fill">
-                    <Button x:Name="buttonDevice" Content="Device" Style="{StaticResource buttonsStyleAppBar}"/>
-                </Viewbox>
-
-                <Viewbox Grid.Column="3" Stretch="Fill">
-                    <Button x:Name="buttonSecurity" Content="Security" Style="{StaticResource buttonsStyleAppBar}"/>
-                </Viewbox>
-
-                <Viewbox Grid.Column="4" Stretch="Fill">
-                    <Button x:Name="buttonSupport" Content="Support" Style="{StaticResource buttonsStyleAppBar}"/>
-                </Viewbox>
-
-                <Viewbox Grid.Column="5" Stretch="Fill">
-                    <Button x:Name="buttonU" Content="U" Style="{StaticResource buttonsStyleAppBar}"/>
-                </Viewbox>
+                <!--Create Buttons for App Bar-->
+                <Button x:Name="buttonL" Grid.Column="0"  Content="L" Style="{StaticResource buttonsStyleAppBar}"/>
+                <TextBlock x:Name="textBlockLegionSlim" Grid.Column="1"  Text="Legion Slim 5 16APH8" Foreground="White" 
+                           HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="40"/>
+                <Button x:Name="buttonDevice" Grid.Column="2" Content="Device" Style="{StaticResource buttonsStyleAppBar}"/>
+                <Button x:Name="buttonSecurity" Grid.Column="3" Content="Security" Style="{StaticResource buttonsStyleAppBar}"/>
+                <Button x:Name="buttonSupport" Grid.Column="4" Content="Support" Style="{StaticResource buttonsStyleAppBar}"/>
+                <Button x:Name="buttonU" Grid.Column="5" Content="U" Style="{StaticResource buttonsStyleAppBar}"/>
             </Grid>
         </Border>
-        
+
         <!--Create ScrollViewer and his components-->
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
 
             <Grid x:Name="gridMainScrollViewer" Background="DarkSlateGray">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="7*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="9*"/>
                 </Grid.RowDefinitions>
 
-                <!--Second Bar implementation-->
-                <Border x:Name="borderScrollViewer"  Grid.Row="0" Grid.ColumnSpan="2" Background="Aquamarine">
-                    <Grid x:Name="gridBorderScrollViewer">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="6*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Viewbox Grid.Column="0">
-                            <TextBlock x:Name="textBlockLegion" Text="LEGION" Foreground="Indigo" Padding="10, 0, 10, 0"/>
-                        </Viewbox>
-                    </Grid>
-                </Border>
 
                 <!--gridLeftScrollViewer implementation-->
+                <Grid Grid.Column ="0" Grid.Row="0" Grid.ColumnSpan="2" Background="Aquamarine">
+                    <TextBlock Grid.Column="0" Grid.ColumnSpan="2" x:Name="textBlockLegion" Text="LEGION" Foreground="Indigo" 
+                      HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="40" Margin="50, 0, 0, 0"/>
+                </Grid>
+
                 <Grid x:Name="gridLeftScrollViewer" Grid.Column ="0" Grid.Row="1" Background="DarkSlateGray">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="4.4*"/>
+                        <RowDefinition Height="4*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="2.3*"/>
-                        <RowDefinition Height="2.3*"/>
+                        <RowDefinition Height="2.5*"/>
+                        <RowDefinition Height="2.5*"/>
                     </Grid.RowDefinitions>
 
                     <Border x:Name="borderTopScrollViewer" Grid.Row="0" BorderBrush="Silver" BorderThickness="2">
 
-                        <!--gridTop implemetation-->
-                        <Grid x:Name="gridTop" Background="DarkSlateGray">
+                        <!--gridTopScrollViewer implemetation-->
+                        <Grid x:Name="gridTopScrollViewer" Background="DarkSlateGray">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2.3*"/>
+                                <ColumnDefinition Width="0.3*"/>
                                 <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="2.3*"/>
-                                <ColumnDefinition Width="2.4*"/>
+                                <ColumnDefinition Width="0.3*"/>
+                                <ColumnDefinition Width="1.4*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Viewbox Grid.Column="0" Stretch="Fill">
-                                <Button x:Name="buttonGPU" Content="CPU" BorderBrush="Silver" BorderThickness="0" Background="White" Foreground="Black" 
-                                        Padding="10, 40, 10, 0" Margin="20, 0, 20, 0" FontSize="10"/>
-                            </Viewbox>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="9*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
-                            <Viewbox Grid.Column="1" Stretch="Fill">
-                                <Button Content="CPU" BorderThickness="0"/>
-                            </Viewbox>
-
-                            <Viewbox Grid.Column="2" Stretch="Fill">
-                                <Button x:Name="buttonVRAM" Content="VRAM" BorderBrush="Silver" BorderThickness="0" Background="White" Foreground="Black" 
-                                        Padding="10, 40, 10, 0 " Margin="20, 0, 20, 0" FontSize="10"/>
-                            </Viewbox>
+                            <Button x:Name="buttonGPU" Grid.Column="0" BorderThickness="0" Margin="10, 0, 0, 0"/>
+                            <Button x:Name="buttonCPU" Grid.Column="1" Content="CPU" FontSize="40" BorderThickness="1" 
+                                    Margin="60, 90, 60, 0"/>
+                            <Button x:Name="buttonVRAM" Grid.Column="2" BorderThickness="1" Margin="10, 0, 0, 0" />
+                            <Button x:Name="buttonSSD" Grid.Column="3" Content="100%" FontSize="40" BorderThickness="1"
+                                    Margin="30, 130, 30, 0"/>
+                            <TextBlock Grid.Column="0" Grid.Row="1" x:Name="textBlockGPU" Text="GPU" Foreground="White" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14"/>
+                            <TextBlock Grid.Column="2" Grid.Row="1" x:Name="textBlockVRAM" Text="VRAM" Foreground="White" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14"/>
+                            <TextBlock Grid.Column="3" Grid.Row="1" x:Name="textBlockSSD" Text="SSD" Foreground="White" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14"/>
                         </Grid>
                     </Border>
 
+                    <TextBlock Grid.Column="0" Grid.Row="1" x:Name="textBlockSystemTools" Text="System Tools" Foreground="White"
+                               HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="35"/>
+
+
+                    <Border x:Name="borderMiddleScrollViewer" Grid.Row="2" BorderBrush="Silver" BorderThickness="2">
+
+                        <!--gridMiddleScrollViewer implementation-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="0" x:Name="buttonSystemUpdate" Content="System Update" 
+                                        Style="{StaticResource buttonsStyleGridMiddleScrollViewer}"/>
+                            <Button Grid.Column="1" x:Name="buttonMacroKey" Content="Macro Key" 
+                                        Style="{StaticResource buttonsStyleGridMiddleScrollViewer}"/>
+                            <Button Grid.Column="2"  x:Name="buttonPower" Content="Power" 
+                                        Style="{StaticResource buttonsStyleGridMiddleScrollViewer}"/>
+                            <Button Grid.Column="3" x:Name="buttonMedia" Content="Media" 
+                                        Style="{StaticResource buttonsStyleGridMiddleScrollViewer}"/>
+                            <Button Grid.Column="4"  x:Name="buttonHardwareScan" Content="Hardware Scan" 
+                                        Style="{StaticResource buttonsStyleGridMiddleScrollViewer}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="3" BorderBrush="Silver" BorderThickness="2" Margin="0, 20, 0 , 0">
+                       <TextBlock Grid.Column="0" Grid.Row="1" x:Name="textBlockSystemHealth" Text="System Health" Foreground="White"
+                                  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="35"/>
+                        
+                    </Border>
+
                 </Grid>
-                
+
+
                 <Grid x:Name="gridRightScrollViewer" Grid.Column="1" Grid.Row="1" Background="Blue" />
-                
+
             </Grid>
         </ScrollViewer>
     </Grid>
