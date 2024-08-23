@@ -10,7 +10,7 @@
 
     <!--Implement global settings for AppBar buttons-->
     <Window.Resources>
-        <Style x:Key="buttonsStyleAppBar" TargetType="Button">
+        <Style x:Key="borderAppBar" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Silver"/>
             <Setter Property="BorderThickness" Value="0.3"/>
@@ -18,13 +18,29 @@
             <Setter Property="FontSize" Value="20"/>
         </Style>
 
-        <Style x:Key="buttonsStyleGridMiddleScrollViewer" TargetType="Button">
+        <Style x:Key="gridMiddleLeft" TargetType="Button">
             <Setter Property="Background" Value="White"/>
             <Setter Property="BorderBrush" Value="Silver"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style x:Key="gridsRight" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+
+        <Style x:Key="checkBox" TargetType="CheckBox">
+            <Setter Property="Content" Value="CheckBox"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="0, 0, 10, 0"/>
         </Style>
     </Window.Resources>
 
@@ -49,13 +65,13 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Create Buttons for App Bar-->
-                <Button x:Name="buttonL" Grid.Column="0"  Content="L" Style="{StaticResource buttonsStyleAppBar}"/>
+                <Button x:Name="buttonL" Grid.Column="0"  Content="L" Style="{StaticResource borderAppBar}"/>
                 <TextBlock x:Name="textBlockLegionSlim" Grid.Column="1"  Text="Legion Slim 5 16APH8" Foreground="White" 
                            HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="40"/>
-                <Button x:Name="buttonDevice" Grid.Column="2" Content="Device" Style="{StaticResource buttonsStyleAppBar}"/>
-                <Button x:Name="buttonSecurity" Grid.Column="3" Content="Security" Style="{StaticResource buttonsStyleAppBar}"/>
-                <Button x:Name="buttonSupport" Grid.Column="4" Content="Support" Style="{StaticResource buttonsStyleAppBar}"/>
-                <Button x:Name="buttonU" Grid.Column="5" Content="U" Style="{StaticResource buttonsStyleAppBar}"/>
+                <Button x:Name="buttonDevice" Grid.Column="2" Content="Device" Style="{StaticResource borderAppBar}"/>
+                <Button x:Name="buttonSecurity" Grid.Column="3" Content="Security" Style="{StaticResource borderAppBar}"/>
+                <Button x:Name="buttonSupport" Grid.Column="4" Content="Support" Style="{StaticResource borderAppBar}"/>
+                <Button x:Name="buttonU" Grid.Column="5" Content="U" Style="{StaticResource borderAppBar}"/>
             </Grid>
         </Border>
 
@@ -136,15 +152,15 @@
                             </Grid.ColumnDefinitions>
 
                             <Button Grid.Column="0" x:Name="buttonSystemUpdate" Content="System Update" 
-                                        Style="{StaticResource buttonsStyleGridMiddleScrollViewer}"/>
+                                        Style="{StaticResource gridMiddleLeft}"/>
                             <Button Grid.Column="1" x:Name="buttonMacroKey" Content="Macro Key" 
-                                        Style="{StaticResource buttonsStyleGridMiddleScrollViewer}"/>
+                                        Style="{StaticResource gridMiddleLeft}"/>
                             <Button Grid.Column="2"  x:Name="buttonPower" Content="Power" 
-                                        Style="{StaticResource buttonsStyleGridMiddleScrollViewer}"/>
+                                        Style="{StaticResource gridMiddleLeft}"/>
                             <Button Grid.Column="3" x:Name="buttonMedia" Content="Media" 
-                                        Style="{StaticResource buttonsStyleGridMiddleScrollViewer}"/>
+                                        Style="{StaticResource gridMiddleLeft}"/>
                             <Button Grid.Column="4" x:Name="buttonHardwareScan" Content="Hardware Scan" 
-                                        Style="{StaticResource buttonsStyleGridMiddleScrollViewer}"/>
+                                        Style="{StaticResource gridMiddleLeft}"/>
                         </Grid>
                     </Border>
 
@@ -186,37 +202,22 @@
                                 </Grid.RowDefinitions>
 
                                 <!--gridRightTopScrollViewer textblocks and checkboxes implementation-->
-                                <TextBlock Grid.Row="0" x:Name="textBlockLegionEdge" Text="LEGION EDGE" Foreground="White" 
-                                           HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="30" Margin="10, 0 ,0 ,0" /> 
-                                <TextBlock Grid.Row="1" x:Name="textThermalMode" Text="Thermal Mode" Foreground="White" 
-                                           HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/>
-                                <TextBlock Grid.Row="2" x:Name="textBlockGpuOverclock" Text="GPU Overclock" Foreground="White" 
-                                           HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/>
-                                <TextBlock Grid.Row="3" x:Name="textBlockNetworkBoost" Text="Network Boost" Foreground="White" 
-                                           HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/>
-                                <TextBlock Grid.Row="4" x:Name="textBlockAutoClose" Text="Auto Close" Foreground="White" 
-                                           HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/> 
-                                <TextBlock Grid.Row="5" x:Name="textBlockGpuWorkingMode" Text="GPU Working Mode" Foreground="White" 
-                                           HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/>
-                                <TextBlock Grid.Row="6" x:Name="textBlockOverDrive" Text="Over Drive" Foreground="White" 
-                                           HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/>
-                                <TextBlock Grid.Row="7" x:Name="textBlockTouchpadLock" Text="Touchpad Lock" Foreground="White" 
-                                           HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/>
-                                
-                                <CheckBox Grid.Column="1" Grid.Row="1" Content="CheckBox" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                          FontSize="15" Foreground="White" Margin="0, 0, 10, 0"/> 
-                                <CheckBox Grid.Column="1" Grid.Row="2" Content="CheckBox" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                          FontSize="15" Foreground="White" Margin="0, 0, 10, 0"/> 
-                                <CheckBox Grid.Column="1" Grid.Row="3" Content="CheckBox" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                          FontSize="15" Foreground="White" Margin="0, 0, 10, 0"/> 
-                                <CheckBox Grid.Column="1" Grid.Row="4" Content="CheckBox" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                          FontSize="15" Foreground="White" Margin="0, 0, 10, 0"/> 
-                                <CheckBox Grid.Column="1" Grid.Row="5" Content="CheckBox" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                          FontSize="15" Foreground="White" Margin="0, 0, 10, 0"/> 
-                                <CheckBox Grid.Column="1" Grid.Row="6" Content="CheckBox" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                          FontSize="15" Foreground="White" Margin="0, 0, 10, 0"/>
-                                <CheckBox Grid.Column="1" Grid.Row="7" Content="CheckBox" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                          FontSize="15" Foreground="White" Margin="0, 0, 10, 0"/>
+                                <TextBlock Grid.Row="0" x:Name="textBlockLegionEdge" Text="LEGION EDGE" Style="{StaticResource gridsRight}" FontSize="35" Margin="10, 0 ,0 ,0" /> 
+                                <TextBlock Grid.Row="1" x:Name="textThermalMode" Text="Thermal Mode" Style="{StaticResource gridsRight}"/>
+                                <TextBlock Grid.Row="2" x:Name="textBlockGpuOverclock" Text="GPU Overclock" Style="{StaticResource gridsRight}"/>
+                                <TextBlock Grid.Row="3" x:Name="textBlockNetworkBoost" Text="Network Boost" Style="{StaticResource gridsRight}"/>
+                                <TextBlock Grid.Row="4" x:Name="textBlockAutoClose" Text="Auto Close" Style="{StaticResource gridsRight}"/> 
+                                <TextBlock Grid.Row="5" x:Name="textBlockGpuWorkingMode" Text="GPU Working Mode" Style="{StaticResource gridsRight}"/>
+                                <TextBlock Grid.Row="6" x:Name="textBlockOverDrive" Text="Over Drive" Style="{StaticResource gridsRight}"/>
+                                <TextBlock Grid.Row="7" x:Name="textBlockTouchpadLock" Text="Touchpad Lock" Style="{StaticResource gridsRight}"/>
+
+                                <CheckBox Grid.Column="1" Grid.Row="1"  Style="{StaticResource checkBox}"/>
+                                <CheckBox Grid.Column="1" Grid.Row="2"  Style="{StaticResource checkBox}"/> 
+                                <CheckBox Grid.Column="1" Grid.Row="3"  Style="{StaticResource checkBox}"/> 
+                                <CheckBox Grid.Column="1" Grid.Row="4"  Style="{StaticResource checkBox}"/> 
+                                <CheckBox Grid.Column="1" Grid.Row="5"  Style="{StaticResource checkBox}"/> 
+                                <CheckBox Grid.Column="1" Grid.Row="6"  Style="{StaticResource checkBox}"/>
+                                <CheckBox Grid.Column="1" Grid.Row="7"  Style="{StaticResource checkBox}"/>
                             </Grid>
                         </Border>
 
@@ -239,19 +240,13 @@
                                 </Grid.RowDefinitions>
 
                                 <!--gridLowerRightScrollViewer textblocks and checkboxes implementation-->
-                                <TextBlock Grid.Row="0"  Text="Rapid Charge" Foreground="White"
-                                            HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/>
-                                <TextBlock Grid.Row="1"  Text="WiFi Security" Foreground="White"
-                                            HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/>
-                                <TextBlock Grid.Row="2"  Text="Adaptive Refresh Rate" Foreground="White"
-                                            HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/>
+                                <TextBlock Grid.Row="0"  Text="Rapid Charge" Style="{StaticResource gridsRight}"/>
+                                <TextBlock Grid.Row="1"  Text="WiFi Security" Style="{StaticResource gridsRight}"/>
+                                <TextBlock Grid.Row="2"  Text="Adaptive Refresh Rate" Style="{StaticResource gridsRight}"/>
 
-                                <CheckBox Grid.Column="1" Grid.Row="0" Content="CheckBox" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                            FontSize="15" Foreground="White" Margin="0, 0, 10, 0"/>
-                                <CheckBox Grid.Column="1" Grid.Row="1" Content="CheckBox" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                            FontSize="15" Foreground="White" Margin="0, 0, 10, 0"/>
-                                <CheckBox Grid.Column="1" Grid.Row="2" Content="CheckBox" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                            FontSize="15" Foreground="White" Margin="0, 0, 10, 0"/>
+                                <CheckBox Grid.Column="1" Grid.Row="0" Style="{StaticResource checkBox}"/>
+                                <CheckBox Grid.Column="1" Grid.Row="1" Style="{StaticResource checkBox}"/>
+                                <CheckBox Grid.Column="1" Grid.Row="2" Style="{StaticResource checkBox}"/>
                             </Grid>
                         </Border>
                     </Grid>
