@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1050" Background="CadetBlue">
+        Title="MainWindow" Height="1200" Width="1300" Background="CadetBlue"
+        SizeChanged="WindowSizeChanged">
 
     <!--Implement global settings for AppBar buttons-->
     <Window.Resources>
@@ -24,7 +25,6 @@
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Margin" Value="10"/>
-            <Setter Property="Padding" Value="0"/>
         </Style>
     </Window.Resources>
 
@@ -60,7 +60,7 @@
         </Border>
 
         <!--Create ScrollViewer and his components-->
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
 
             <Grid x:Name="gridMainScrollViewer" Background="DarkSlateGray">
                 <Grid.ColumnDefinitions>
@@ -153,8 +153,6 @@
                         <TextBlock Grid.Column="0" Grid.Row="1" x:Name="textBlockSystemHealth" Text="System Health" HorizontalAlignment="Left" 
                                    VerticalAlignment="Top" Foreground="White" FontSize="35" Margin="10, 0, 0, 0"/>
                     </Border>
-
-                    <Grid Grid.Row="3"/>
                 </Grid>
 
                 <!--gridRightScrollViewer implementation-->
@@ -189,7 +187,7 @@
 
                                 <!--gridRightTopScrollViewer textblocks and checkboxes implementation-->
                                 <TextBlock Grid.Row="0" x:Name="textBlockLegionEdge" Text="LEGION EDGE" Foreground="White" 
-                                           HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="30" Margin="10, 0 ,0 ,0" /> 
+                                           HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="30" Margin="10, 0 ,0 ,0" /> 
                                 <TextBlock Grid.Row="1" x:Name="textThermalMode" Text="Thermal Mode" Foreground="White" 
                                            HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/>
                                 <TextBlock Grid.Row="2" x:Name="textBlockGpuOverclock" Text="GPU Overclock" Foreground="White" 
