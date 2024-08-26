@@ -25,5 +25,10 @@ namespace DemoWPF
                 gridMainScrollViewer.MinHeight= minHeight;
             }
         }
+
+        private void Style_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
